@@ -1,0 +1,150 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding-left:10px;
+    background-color: black;
+    font-family: 'Playpen Sans', cursive;
+}
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+h1{
+    /* width: 100%; */
+    /* removed horizontal scroll bar */
+    margin: 0 auto;
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    z-index: 1;
+    background: linear-gradient(to right, #4b4b4b, #2b2b2b);
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: slideDownAnimation 0.8s ease forwards;
+}
+/* CSS for the search bar aligned to the right using absolute positioning */
+.search-bar {
+    position: fixed;
+    z-index: 99;
+    text-align: right;
+    top:15px;
+    right:8px;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+
+  
+  input[type="text"] {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  /* Optional: Adjust styles to suit your layout */
+  button:hover {
+    background-color: #e0e0e0;
+  }
+  
+
+@keyframes slideDownAnimation {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+::selection {
+    background-color: #d16ab2; /* Change this to the color you prefer */
+    color: #000; /* Change the text color for better readability */
+  }
+
+.countries{
+    max-width: 100%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.country-div{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: #6b99ad;
+    border: 1px solid burlywood;
+    padding: 15px;
+    overflow: scroll;
+    transition:0.5s;
+    opacity: 0; /* Initially set the opacity to 0 */
+    transform: scale(0.8); /* Initially scale the content down */
+    animation: scaleUpAnimation 1.5s ease forwards; 
+}
+@keyframes scaleUpAnimation {
+    to {
+        opacity: 1; /* Gradually fade in the content */
+        transform: scale(1); /* Scale up the content to its original size */
+    }
+}
+.country-div:hover{
+box-shadow: 0px 0px 15px rgb(217, 113, 153);
+}
+.country-div::-webkit-scrollbar {
+    display: none;
+  }
+.country-div h4{
+    margin: 10px;
+    border-bottom: 1px solid rgb(42, 199, 186);
+}
+img{
+    width: 100%;
+    height: 150px;
+}
+
+/* now do styles as much as you want */
+/* add media query for responsive */
+@media screen and (max-width: 570px){
+    .countries{
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 90%;
+        margin-left: 20px;
+        
+    }
+    body{
+        width: 90%;
+    }
+}
+@media screen and (min-width: 600px){
+    .countries{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 900px){
+    .countries{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
